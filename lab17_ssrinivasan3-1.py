@@ -3,7 +3,7 @@ Program Name: lab17_ssrinivasan3-1.py
 
 Author: Shrrayash Srinivasan
 
-Purpose: Refactor the HN submission script to safely handle missing data fields and prevent KeyError crashes.
+Purpose: I refactored the HN submission py to ensure it safely handles the missing data fields and prevents KeyError crashes.
 
 Date: December 11, 2025 
 """
@@ -22,7 +22,7 @@ submission_ids = r.json()
 submission_dicts = []
 
 
-for submission_id in submission_ids[:30]:
+for submission_id in submission_ids[:30]: 
 
     """Make a separate API call for each submission."""
 
@@ -40,6 +40,7 @@ for submission_id in submission_ids[:30]:
 
         'link': f"http://news.ycombinator.com/item?id={submission_id}",
 
+        """FIXED: Now avoids KeyError"""
         'comments': response_dict.get('descendants', 0)
     }
     submission_dicts.append(submission_dict)
